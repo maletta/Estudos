@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const uploadConfig = require('./config/upload');
 const PostController = require('./controllers/PostController');
-const LikeController = require('./controllers/LikeController');
+const ReactionController = require('./controllers/ReactionController');
 const CommentController = require('./controllers/CommentController');
 const routes = new express.Router();
 const upload = new multer(uploadConfig);
@@ -17,7 +17,7 @@ routes.get('/posts', PostController.index);
 routes.post('/posts', upload.single('image'), PostController.store);
 
 // upload.none() para interpretar o body da requisição e transformar em json
-routes.post('/posts/:id/like',  upload.none(), LikeController.store);
+routes.post('/posts/:id/reaction',  upload.none(), ReactionController.store);
 
 routes.get('/posts/:id/comment', upload.none(), CommentController.store);
 

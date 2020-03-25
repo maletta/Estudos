@@ -5,8 +5,12 @@ module.exports = {
     // middleware
     async index(req, res) {
         // listar todos os posts ordenados pelo mais recente
-        const posts = await Post.find().sort('-createdAt');
-
+        let posts = {};
+        if (req.params) {
+            posts = await Post.find({_id:req.params.id});
+        } else {
+            posts = await Post.find().sort('-createdAt');
+        } 
         return res.json(posts);
     },
     async store(req, res) {
@@ -24,4 +28,5 @@ module.exports = {
 
         return res.json(post);
     },
+
 }

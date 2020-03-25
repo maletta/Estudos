@@ -1,11 +1,24 @@
 const mongoose = require('mongoose');
 
+
+const ReactionSchema = new mongoose.Schema(
+    {
+        author: { type: String, required: false },
+        reactions: { type: String, enum:['like','dislike','lol','love','pride'], required: false}
+    },
+    {
+        // criará campos createdAt e UpdatedAt
+        timestamps: true,
+    }
+);
+
 const AnswerSchema = new mongoose.Schema(
     {
         author: { type: String, required: false },
         description: { type: String, required: false },
         media: { type: String, required: false },
-        likes: { type: Number, required: false, default: 0 }
+        reactions : [ReactionSchema]
+        // reactions: { type: Number, required: false, default: 0 }
     },
     {
         // criará campos createdAt e UpdatedAt
@@ -19,7 +32,8 @@ const CommentSchema = new mongoose.Schema(
         argument: { type: String, required: false },
         media: { type: String, required: false },
         answers: [AnswerSchema],
-        likes: { type: Number, required: false, default: 0 }
+        reactions: [ReactionSchema]
+        // reactions: { type: Number, required: false, default: 0 }
     },
     {
         // criará campos createdAt e UpdatedAt
@@ -34,7 +48,8 @@ const PostSchema = new mongoose.Schema(
         description: { type: String, required: false },
         media: { type: String, required: false },
         comments: [CommentSchema],
-        likes: { type: Number, required: false, default: 0 }
+        reactions: [ReactionSchema]
+        // reactions: { type: Number, required: false, default: 0 }
     },
     {
         // criará campos createdAt e UpdatedAt

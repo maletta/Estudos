@@ -10,11 +10,11 @@ module.exports =  {
     },
     
     async store (req, res){
-        console.log(req.body);
         
         const {author, argument, media, answer, reactions } = req.body;
-        console.log(author, argument);
-        const comment = await Post.create( author, argument);
+        // console.log(author, argument);
+        
+        const comment = await Post.create({author, argument});
 
         return res.json(comment);
     },  

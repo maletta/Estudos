@@ -14,8 +14,15 @@ module.exports =  {
         const {author, argument, media, answer, reactions } = req.body;
         // console.log(author, argument);
         
-        const comment = await Post.create({author, argument});
+        const comment = await Post.create({
+            author, 
+            argument, 
+            media, 
+            answer, 
+            reactions
+        });
 
+        
         return res.json(comment);
     },  
 

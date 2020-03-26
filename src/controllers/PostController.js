@@ -6,7 +6,7 @@ module.exports = {
     async index(req, res) {
         // listar todos os posts ordenados pelo mais recente
         let posts = {};
-        if (req.params) {
+        if (req.params.id) {
             posts = await Post.find({_id:req.params.id});
         } else {
             posts = await Post.find().sort('-createdAt');

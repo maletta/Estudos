@@ -44,7 +44,7 @@ const CommentSchema = new mongoose.Schema(
 const PostSchema = new mongoose.Schema(
     {
         author: { type: String, required: false },
-        place: { type: String, required: true },
+        place: { type: String, required: false },
         description: { type: String, required: false },
         media: { type: String, required: false },
         comments: [CommentSchema],

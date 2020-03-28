@@ -18,12 +18,12 @@ routes.get('/posts/:id', upload.none(), PostController.index); //busca post por 
 routes.post('/posts', upload.single('image'), PostController.store);
 
 // upload.none() para interpretar o body da requisição e transformar em json
-routes.post('/posts/:id/reaction',  upload.none(), ReactionController.store);
+routes.post('/posts/:id/reactionsPost',  upload.none(), ReactionController.store);
+routes.post('/posts/:id/reactionsComment',  upload.none(), ReactionController.store);
 
-routes.get('/posts/:id/comment', upload.none(), CommentController.index);
+routes.get('/posts/:id/comments', upload.none(), CommentController.index);
 
-routes.post('/posts/:id/comment', upload.none(), CommentController.store);
-
+routes.post('/posts/:id/comments', upload.none(), CommentController.store);
 
 
 

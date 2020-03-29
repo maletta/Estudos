@@ -21,6 +21,7 @@ module.exports = {
             place,
             media
         });
+        // console.log(req.body);
 
         return res.json(post);
     },
